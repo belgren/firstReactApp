@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 
-var dummyData = ["Go to the store", "Do work", "Write a react app", "Get a job"];
+var dummyData = [
+  { taskText: "Go to the store", completed: false },
+  { taskText: "Do work", completed: true },
+  { taskText: "Get a job", completed: false },
+]
 
 class TodoApp extends React.Component{
   constructor(props){
@@ -35,11 +39,23 @@ class Todo extends React.Component {
   constructor(props){
     super(props)
   }
-  render(){
+  // function strike(props) => <strike>{this.props.task.taskText}</strike>
+  // var nonStryke = (props) {
+  //   return {this.props.task}
+  // }
+  // nonStryke(props) {
+  //
+  // }
+
+  render() {
     return (
       <li>
-        <button type="button">X</button>
-        {this.props.task}
+        <button>X</button>
+        {
+          this.props.task.completed
+          ? <strike> {this.props.task.taskText} </strike>
+          : this.props.task.taskText
+        }
       </li>
     )
   }
