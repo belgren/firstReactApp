@@ -1,4 +1,39 @@
 import React from "react";
-var ReactDOM = require('react-dom');
+import ReactDOM from 'react-dom';
 
-ReactDOM.render(<p>Change</p>, document.getElementById('root'));
+var dummyData = ["Go to the store", "Do work", "Write a react app", "Get a job"];
+
+class TodoList extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return (
+      <ul>
+        { dummyData.map( (todo) => <Todo task={todo}/>) }
+      </ul>
+    )
+  }
+}
+
+class Todo extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return (
+      <li>
+        <button type="button">X</button>
+        {this.props.task}
+      </li>
+    )
+  }
+}
+
+
+
+
+
+
+
+ReactDOM.render(<TodoList />, document.getElementById('root'));
