@@ -3,6 +3,21 @@ import ReactDOM from 'react-dom';
 
 var dummyData = ["Go to the store", "Do work", "Write a react app", "Get a job"];
 
+class TodoApp extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return (
+      <form>
+        <input type="text"></input>
+        <button type="submit">Add Todo</button>
+        <TodoList/>
+      </form>
+    )
+  }
+}
+
 class TodoList extends React.Component {
   constructor(props){
     super(props)
@@ -31,9 +46,4 @@ class Todo extends React.Component {
 }
 
 
-
-
-
-
-
-ReactDOM.render(<TodoList />, document.getElementById('root'));
+ReactDOM.render(<TodoApp />, document.getElementById('root'));
