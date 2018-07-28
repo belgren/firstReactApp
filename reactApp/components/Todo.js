@@ -8,7 +8,18 @@ class Todo extends React.Component {
   render() {
     return (
       <li>
-        <button className="deleteButton">X</button>
+        <button
+          className="deleteButton"
+          onClick={ (event) => this.props.xClick(event)}
+        >
+          X
+        </button>
+        <button
+          className="checkButton"
+          onClick={ (event) => this.props.toggleClick(event)}
+        >
+          ✓
+        </button>
         {
           this.props.task.completed
           ? <strike> {this.props.task.taskText} </strike>

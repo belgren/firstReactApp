@@ -33,7 +33,7 @@ class InputLine extends React.Component{
         }>
         </input>
         <button type="submit" onClick={
-          (event) => this.handleSubmit(event)//this.props.submit(event, "tester2")
+          (event) => this.handleSubmit(event)
         }>
         Add Todo</button>
       </form>
