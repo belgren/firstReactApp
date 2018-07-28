@@ -1,6 +1,6 @@
 import React from "react";
 import TodoList from './TodoList.js'
-
+import InputLine from './InputLine.js'
 var dummyData = [
   { taskText: "Go to the store", completed: false },
   { taskText: "Do work", completed: true },
@@ -20,15 +20,26 @@ class TodoApp extends React.Component{
       todos: dummyData
     })
   }
+
+  addTodo(event, task){
+    event.preventDefault();
+    dummyData.push(
+      { taskText: task, completed: false },
+    )
+    this.setState({
+      todos: dummyData
+    })
+  }
+
   render(){
     return (
-      <form>
-        <input type="text"></input>
-        <button type="submit">Add Todo</button>
+      <div>
+        <InputLine submit={(event, task) => this.addTodo(event, task)}/>
         <TodoList todos={this.state.todos}/>
-      </form>
+      </div>
     )
   }
 }
+
 
 export default TodoApp;
