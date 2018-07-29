@@ -35,7 +35,7 @@ class TodoApp extends React.Component{
     dummyData = dummyData.filter((item) => item != todo)
     this.setState({
       todos: dummyData
-    })
+    }) 
   }
 
   toggleStrike(event, todo){
