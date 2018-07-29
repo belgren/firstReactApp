@@ -39,9 +39,9 @@ class TodoApp extends React.Component{
   }
 
   toggleStrike(event, todo){
-    todo.completed = !todo.completed
+    todo.completed = !todo.completed 
     // var newData = dummyData.map( (item) => {
-    //     if (item==todo){ 
+    //     if (item==todo){
     //       return {taskText: item.taskText, completed: !item.completed};
     //     } else{
     //       return item;
