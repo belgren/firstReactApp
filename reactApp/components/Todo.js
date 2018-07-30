@@ -20,10 +20,11 @@ class Todo extends React.Component {
         >
           ✓
         </button>
+
         {
           this.props.task.completed
-          ? <strike> {this.props.task.taskText} </strike>
-          : this.props.task.taskText
+          ? <strike> {this.props.task.task} </strike>
+          : this.props.task.task
         }
       </li>
     )

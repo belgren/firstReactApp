@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const TodoItem = require('../models/TodoItem.js')
-router.get('/add', (req, res) => {
-  const testTodo = new TodoItem({
-    task: "test task"
-  });
 
+const bodyParser = require('body-parser');
+router.use(bodyParser.json());
+
+router.post('/add', (req, res) => {
+  console.log('task in db ', req.body.taskText)
+  const testTodo = new TodoItem({
+    task: req.body.taskText
+  });
+  console.log(testTodo);
   testTodo.save()
     .then(response => {
       res.send(response);

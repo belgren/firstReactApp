@@ -1,11 +1,15 @@
 import React from "react";
-import TodoList from './TodoList.js'
-import InputLine from './InputLine.js'
+import TodoList from './TodoList.js';
+import InputLine from './InputLine.js';
+import axios from "axios";
+
 var dummyData = [
-  { taskText: "Go to the store", completed: false },
-  { taskText: "Do work", completed: false },
-  { taskText: "Get a job", completed: false },
+  { task: "Go to the store", completed: false },
+  { task: "Do work", completed: false },
+  { task: "Get a job", completed: false },
 ]
+
+const dbUrl = "http://localhost:3000/db";
 
 class TodoApp extends React.Component{
   constructor(props){
@@ -23,12 +27,25 @@ class TodoApp extends React.Component{
 
   addTodo(event, task){
     event.preventDefault();
-    dummyData.push(
-      { taskText: task, completed: false },
-    )
-    this.setState({
-      todos: dummyData
+    var self = this;
+    axios.post(dbUrl + '/add',
+    {taskText: task})
+    .then(function (response) {
+      console.log("data: ", response.data);
+      console.log("before state: ", self.state.todos);
+      self.setState({ todos: self.state.todos.concat(response.data)});
+
     })
+    .catch(function (error) {
+      console.log(error);
+    });
+    //
+    // dummyData.push(
+    //   { taskText: task, completed: false },
+    // )
+    // this.setState({
+    //   todos: dummyData
+    // })
   }
 
   removeTodo(event, todo){
@@ -39,7 +56,7 @@ class TodoApp extends React.Component{
   }
 
   toggleStrike(event, todo){
-    todo.completed = !todo.completed 
+    todo.completed = !todo.completed
     // var newData = dummyData.map( (item) => {
     //     if (item==todo){
     //       return {taskText: item.taskText, completed: !item.completed};
